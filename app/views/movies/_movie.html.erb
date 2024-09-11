@@ -1,22 +1,12 @@
-<div id="<%= dom_id movie %>">
-  <p>
-    <strong>Title:</strong>
-    <%= movie.title %>
-  </p>
+<tr id="<%= dom_id(movie) %>">
+  <td><%= movie.title %></td>
+  <td><%= movie.rating %></td>
+  <td><%= movie.release_date.strftime("%Y-%m-%d") %></td>
+  <td>
+    <%= link_to "Show this movie", movie %> 
+    <%= link_to "Edit this movie", edit_movie_path(movie) %> |
+    <%= button_to "Destroy this movie", movie, method: :delete, remote: true, data: { confirm: "Are you sure?" } %>
+  </td>
+</tr>
 
-  <p>
-    <strong>Rating:</strong>
-    <%= movie.rating %>
-  </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= movie.description %>
-  </p>
-
-  <p>
-    <strong>Release date:</strong>
-    <%= movie.release_date %>
-  </p>
-
-</div>

@@ -1,6 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @movie %>
+<div id="<%= dom_id(@movie) %>">
+  <p>
+    <strong>Title:</strong>
+    <%= @movie.title %>
+  </p>
+  <p>
+    <strong>Rating:</strong>
+    <%= @movie.rating %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%= @movie.description %>
+  </p>
+  <p>
+    <strong>Release Date:</strong>
+    <%= @movie.release_date.strftime("%Y-%m-%d") %>
+  </p>
+</div>
 
 <div>
   <%= link_to "Edit this movie", edit_movie_path(@movie) %> |

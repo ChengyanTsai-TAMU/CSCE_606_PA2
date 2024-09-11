@@ -1,16 +1,36 @@
+<%= stylesheet_link_tag 'index', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 <p style="color: green"><%= notice %></p>
 
 <% content_for :title, "Movies" %>
 
 <h1>Movies</h1>
 
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Rating</th>
+      <th>Release Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+
+      <%= render partial: 'movie', locals: { movie: movie } %>
+
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td colspan="4">
+        <strong>Total Movies: <%= @movies.count %></strong>
+      </td>
+    </tr>
+  </tfoot>
+</table>
 
 <%= link_to "New movie", new_movie_path %>
