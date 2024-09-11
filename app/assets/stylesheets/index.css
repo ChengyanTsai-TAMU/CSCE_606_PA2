@@ -1,13 +1,11 @@
 /* CSS for index page*/
 
-/* Style for the table */
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
 }
 
-/* Style for table headers */
 thead th {
   background-color: #f4f4f4;
   padding: 10px;
@@ -15,7 +13,6 @@ thead th {
   border-bottom: 2px solid #ddd;
 }
 
-/* Style for table rows */
 tbody tr:nth-child(even) {
   background-color: #f9f9f9; /* Gray color for even rows */
 }
@@ -24,13 +21,11 @@ tbody tr:nth-child(odd) {
   background-color: #ffffff; /* White color for odd rows */
 }
 
-/* Style for table cells */
 tbody td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
 
-/* Style for the last row of the table */
 tfoot td {
   padding: 10px;
   text-align: center;
@@ -38,9 +33,40 @@ tfoot td {
   background-color: #f4f4f4;
 }
 
-/* Style for the action links */
 td a,
 td button {
   margin-right: 5px;
 }
     
+.sort-link.highlight {
+    font-weight: bold;
+    color: #ff9800; /* Highlight color */
+}
+
+.sort-link {
+  color: #000; /* Default color */
+  text-decoration: none;
+}
+
+/* Add this to your stylesheet, e.g., application.css */
+
+th a {
+    text-decoration: none;
+    color: black; /* Default color */
+}
+
+th a.current.asc::after {
+  content: '▲'; /* Upward arrow for ascending */
+  margin-left: 5px;
+}
+
+th a.current.desc::after {
+  content: '▼'; /* Downward arrow for descending */
+  margin-left: 5px;
+}
+
+th a.current {
+  font-weight: bold;
+}
+
+  

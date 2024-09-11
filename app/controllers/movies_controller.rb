@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    @movies = Movie.all
+    @movies = Movie.order("#{sort_column} #{sort_direction}")
   end
 
   # GET /movies/1 or /movies/1.json
@@ -67,4 +67,47 @@ class MoviesController < ApplicationController
     def movie_params
       params.require(:movie).permit(:title, :rating, :description, :release_date)
     end
+end
+
+class MoviesController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
+  def index
+    @movies = case sort_column
+              when 'rating'
+                sort_by_rating
+              when 'release_date'
+                sort_by_release_date
+              else
+                sort_by_title
+              end
+  end
+
+  private
+
+  def sort_column
+    Movie.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def sort_by_title
+    Movie.order("#{sort_column} #{sort_direction}")
+  end
+
+  def sort_by_rating
+    Movie.order(Arel.sql("CASE rating
+      WHEN 'G' THEN 1
+      WHEN 'PG' THEN 2
+      WHEN 'PG-13' THEN 3
+      WHEN 'R' THEN 4
+      WHEN 'NC-17' THEN 5
+      ELSE 6 END #{sort_direction}"))
+  end
+
+  def sort_by_release_date
+    Movie.order("release_date #{sort_direction}")
+  end
 end
