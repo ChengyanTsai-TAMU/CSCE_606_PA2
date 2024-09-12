@@ -38,30 +38,22 @@ td button {
   margin-right: 5px;
 }
     
-.sort-link.highlight {
-    font-weight: bold;
-    color: #ff9800; /* Highlight color */
+.sorted-column {
+  background-color: #ffeb3b; 
 }
-
-.sort-link {
-  color: #000; /* Default color */
-  text-decoration: none;
-}
-
-/* Add this to your stylesheet, e.g., application.css */
 
 th a {
     text-decoration: none;
-    color: black; /* Default color */
+    color: black; 
 }
 
 th a.current.asc::after {
-  content: '▲'; /* Upward arrow for ascending */
+  content: '▲'; 
   margin-left: 5px;
 }
 
 th a.current.desc::after {
-  content: '▼'; /* Downward arrow for descending */
+  content: '▼';
   margin-left: 5px;
 }
 
